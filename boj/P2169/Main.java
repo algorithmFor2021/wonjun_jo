@@ -9,8 +9,6 @@ public class Main {
     static int INF = -100 * 1000 * 1001;
     static int[][] arr = new int[1001][1001];
     static int[][] dp = new int[1001][1001];
-    static int[] dx = {1,0,0};
-    static int[] dy = {0,-1,1};
 
     static int n,m;
     public static void main(String[] args) throws Exception{
