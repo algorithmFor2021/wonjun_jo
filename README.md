@@ -17,3 +17,9 @@
 - [**도시분할계획**](https://www.acmicpc.net/problem/1647)
 - [**네트워크연결**](https://www.acmicpc.net/problem/1922)
 - [**녹색 옷 입은 애가 젤다지?**](https://www.acmicpc.net/problem/4485)
+
+**- 6/26 까지
+- [**부분수열의 합**](https://www.acmicpc.net/problem/1182)
+- [**단어수학**](https://www.acmicpc.net/problem/1339)
+- [**가르침**](https://www.acmicpc.net/problem/1062)
+- [**부분합**](https://www.acmicpc.net/problem/1806)
