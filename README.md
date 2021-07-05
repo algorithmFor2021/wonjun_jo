@@ -30,3 +30,8 @@
 - [**서울 지하철 2호선**](https://www.acmicpc.net/problem/16947)
 - [**점프 점프**](https://www.acmicpc.net/problem/11060)
 
+**- 7/10 까지**
+- [**적록색약**](https://www.acmicpc.net/problem/10026)
+- [**평범한배낭**](https://www.acmicpc.net/problem/12865)
+- [**크리보드**](https://www.acmicpc.net/problem/11058)
+- [**인구이동**](https://www.acmicpc.net/problem/16234)
