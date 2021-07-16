@@ -35,3 +35,10 @@
 - [**평범한배낭**](https://www.acmicpc.net/problem/12865)
 - [**크리보드**](https://www.acmicpc.net/problem/11058)
 - [**인구이동**](https://www.acmicpc.net/problem/16234)
+
+
+**-  7/17 까지**
+- [**수들의 합2**](https://www.acmicpc.net/problem/2003)
+- [**뱀과 사다리 게임**](https://www.acmicpc.net/problem/16928)
+- [**뮤탈리스크**](https://www.acmicpc.net/problem/12869)
+- [**1학년**](https://www.acmicpc.net/problem/5557)
