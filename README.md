@@ -42,3 +42,9 @@
 - [**뱀과 사다리 게임**](https://www.acmicpc.net/problem/16928)
 - [**뮤탈리스크**](https://www.acmicpc.net/problem/12869)
 - [**1학년**](https://www.acmicpc.net/problem/5557)
+
+**- 7/24 까지**
+- [**괄호**](https://www.acmicpc.net/problem/10422)
+- [**주식회사 승범이네**](https://www.acmicpc.net/problem/16404)
+- [**퇴사2**](https://www.acmicpc.net/problem/15486)
+- [**미확인도착지**](https://www.acmicpc.net/problem/9370)
