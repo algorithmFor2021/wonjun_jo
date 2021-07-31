@@ -2,24 +2,13 @@ package boj.P17144;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
-/*
-7 8 1
-0 0 0 0 0 0 0 9
-0 0 0 0 3 0 0 8
--1 0 5 0 0 0 22 0
--1 8 0 0 0 0 0 0
-0 0 0 0 0 10 43 0
-0 0 5 0 15 0 0 0
-0 0 40 0 0 0 20 0
-    * */
+
+
 public class Main {
     static Fs fs = new Fs();
     static int row,col,t;
     static int[][] arr = new int[1001][1001];
-    static Queue<Point> dust = new LinkedList<>();
     static Point[] cleaner = new Point[2];
     static int[] dx = {-1,1,0,0};
     static int[] dy = {0,0,-1,1};
@@ -33,7 +22,6 @@ public class Main {
         for(int i=0;i<row;i++){
             for(int j=0;j<col;j++){
                 arr[i][j] = fs.nInt();
-                if(arr[i][j] > 0) dust.add(new Point(i,j));
                 if(arr[i][j]  == -1){
                     for(int k=0;k<2;k++){
                         if(cleaner[k].x == -1){
