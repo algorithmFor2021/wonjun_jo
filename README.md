@@ -55,3 +55,9 @@
 - [**Two Dots**](https://www.acmicpc.net/problem/16929)
 - [**연구소**](https://www.acmicpc.net/problem/14502)
 - [**나무재테크**](https://www.acmicpc.net/problem/16235)
+
+**- 8/7 까지 **
+- [**N-Queen**](https://www.acmicpc.net/problem/9663)
+- [**구슬탈출2**](https://www.acmicpc.net/problem/13460)
+- [**벽 부수고 이동하기2**](https://www.acmicpc.net/problem/14442)
+- [**낚시왕**](https://www.acmicpc.net/problem/17143) 
