@@ -5,98 +5,98 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 /*
-5 5
-#####
-#..B#
-#.#.#
-#RO.#
-#####
+7 7
+#######
+#.###R#
+##....#
+#..#.##
+##.#OB#
+##....#
+#######
 * */
 public class Main {
     static Fs fs = new Fs();
-    static final int MAX_TIMES = 10;
     static int n,m;
     static char[][] arr = new char[11][11];
-    static int[] red ;
-    static int[] blue ;
+    static int MAX_CNT = 10;
+    static int[] red;
+    static int[] blue;
+    static int answer = 100;
     static int[] dx = {-1,1,0,0};
     static int[] dy = {0,0,-1,1};
-    static int answer = Integer.MAX_VALUE;
 
     public static void main(String[] args) throws Exception{
         n = fs.nInt();
         m = fs.nInt();
-
         for(int i=0;i<n;i++){
-            int j =0;
-            for(char c : fs.next()) {
-                arr[i][j] = c;
-                if(c == 'R') {
+            char[] temp = fs.next();
+            for(int j =0;j<m;j++) arr[i][j] = temp[j];
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(arr[i][j]=='R'){
                     red = new int[]{i,j};
-                    arr[i][j] = '.';
+                    arr[i][j]='.';
                 }
-                if(c == 'B') {
+                if(arr[i][j]=='B'){
                     blue = new int[]{i,j};
                     arr[i][j] = '.';
                 }
-                j++;
             }
         }
-        int[] tempRed = Arrays.copyOfRange(red, 0, 2);
-        int[] tempBlue = Arrays.copyOfRange(blue,0,2);
-        System.out.println(move(3,tempRed,tempBlue));
-        printBall(tempRed,tempBlue);
-    }
-
-    static void dfs(int cnt,int[] tempRed,int[] tempBlue){
-        if(cnt > MAX_TIMES) return;
-        for(int i=0;i<4;i++){
-            if(     move(i,
-                    Arrays.copyOfRange(tempRed, 0, 2),
-                    Arrays.copyOfRange(tempBlue, 0, 2))){
-            }
-        }
-    }
-
-    // 모든 구슬 dir방향으로 이동시킴
-    static boolean move(int dir,int[] red,int[] blue){
-        boolean redFlag = false,blueFlag = false;
-        while(true){
-            red[0] += dx[dir];
-            red[1] += dy[dir];
-            blue[0] += dx[dir];
-            blue[1] += dy[dir];
-            char nRed = arr[red[0]][red[1]];
-            char nBlue = arr[blue[0]][blue[1]];
-
-            if(nRed != '.'){
-                if(nRed == '#'){
-                    red[0] -= dx[dir];
-                    red[1] -= dy[dir];
-                }
-                redFlag = true;
-            }
-
-            if(nBlue != '.'){
-                if(nBlue == '#') {
-                    blue[0] -= dx[dir];
-                    blue[1] -= dy[dir];
-                }
-                blueFlag = true;
-            }
-
-            if(redFlag && blueFlag) break;
-        }
-
-        if(arr[red[0]][red[1]] == 'O' && arr[blue[0]][blue[1]]=='.'){
-            return true;
-        }else return false;
+        dfs(0,red,blue);
+        System.out.println(answer>10?-1:answer);
 
     }
 
-    static void printBall(int[] red,int[] blue) {
-        System.out.println("red : "+red[0] + " , " + red[1]);
-        System.out.println("blue : "+blue[0] + " , "  +blue[1]);
+    static void dfs(int cnt,int[] r,int[] b){
+        if(cnt > MAX_CNT) return;
+        int ret = check(r,b);
+        if(ret == -1) return;
+        else if(ret == 1) {
+            answer = Math.min(answer,cnt);
+            return;
+        }
+        else{ // ret == 0
+            for(int dir=0;dir<4;dir++){
+                int[] nxt = move(dir,r,b);
+                dfs(cnt+1,new int[]{nxt[0],nxt[1]},new int[]{nxt[2],nxt[3]});
+            }
+
+        }
+
+    }
+    static int[] move(int dir,int[] r,int[] b){
+        int[] cur = {r[0],r[1],b[0],b[1]};
+        boolean redIsMoved = true,blueIsMoved = true;
+        while(redIsMoved || blueIsMoved){
+            int[] next = {cur[0]+dx[dir],cur[1]+dy[dir],cur[2]+dx[dir],cur[3]+dy[dir]};
+            redIsMoved = justOneMove(cur, next, 0, 1, 2, 3);
+            blueIsMoved = justOneMove(cur, next, 2, 3, 0, 1);
+        }
+        return cur;
+    }
+
+    private static boolean justOneMove(int[] cur, int[] next, int i, int i2, int i3, int i4) {
+        boolean isMoved;
+        if (arr[next[i]][next[i2]] == '#') isMoved = false;
+        else if (arr[next[i]][next[i2]] == 'O') {
+            isMoved = false;
+            cur[i] = next[i];
+            cur[i2] = next[i2];
+        } else if (next[i] == cur[i3] && next[i2] == cur[i4]) isMoved = false;
+        else {
+            isMoved = true;
+            cur[i] = next[i];
+            cur[i2] = next[i2];
+        }
+        return isMoved;
+    }
+
+    static int check(int[] r,int[] b){
+        if(arr[b[0]][b[1]]=='O') return -1; // no more search
+        else if(arr[r[0]][r[1]]=='O') return 1; // found
+        else return 0; // more search
     }
 
     static class Fs{
