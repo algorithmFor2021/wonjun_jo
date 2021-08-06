@@ -29,15 +29,16 @@ import java.util.StringTokenizer;
 public class Main {
     static Fs fs = new Fs();
     static int r,c,m;
-    static ArrayList[][] shArr = new ArrayList[101][101];
+    static ArrayList<Integer>[][] shArr = new ArrayList[101][101];
     static int[] dx = {-1,1,0,0};
-    static int[] dy = {0,0,-1,1};
+    static int[] dy = {0,0,1,-1};
     static Shark[] sh = new Shark[10001];
+    static int answer = 0;
 
     public static void main(String[] args) throws Exception{
         r = fs.nInt(); c= fs.nInt(); m= fs.nInt();
 
-        for(int i=0;i<101;i++)for(int j=0;j<101;j++) shArr[i][j] = new ArrayList();
+        for(int i=0;i<101;i++)for(int j=0;j<101;j++) shArr[i][j] = new ArrayList<>();
 
         // (x,y) s = speed , d= direction, z= size
         int x,y,s,d,z;
@@ -48,20 +49,43 @@ public class Main {
             shArr[x][y].add(z);
         }
 
-        for(int col=1;col<=m;col++){
-            findShark(col);
 
+        for(int col=1;col<=c;col++){
+            findShark(col);
+            moveShark();
         }
 
+        System.out.println(answer);
+
+    }
+    static void moveShark(){
+        for(int i=0;i<m;i++) sh[i].move();
+        catchShark();
+    }
+
+    static void catchShark(){
+        for(int i=1;i<=r;i++){
+            for(int j=1;j<=c;j++){
+                if(shArr[i][j].size() > 1){
+                    int maxSize = shArr[i][j].stream().mapToInt(x -> x).max().getAsInt();
+                    for(int l=0;l<m;l++){
+                        if(sh[l].x == i && sh[l].y==j && sh[l].size != maxSize){
+                            sh[l].dead();
+                        }
+                    }
+                }
+            }
+        }
     }
 
     static void findShark(int col){
         for(int i=1;i<=r;i++){
             if(shArr[i][col].size() > 0) {
+                int size = shArr[i][col].get(0);
+                answer += size;
                 for(int j=0;j<m;j++){
-                    if(sh[j].x == i && sh[j].y == col){
-                        sh[j].x = -1;
-                        sh[j].y = -1;
+                    if(sh[j].size == size){
+                        sh[j].dead();
                         return;
                     }
                 }
@@ -80,22 +104,42 @@ public class Main {
             return x==-1;
         }
 
-        private boolean isBound(){
-            if(dir < 2) return x==1 || x==r;
-            else return y==1 || y==c;
+        private void ifTurn(){
+            if(isDead()) return;
+            int nx = x + dx[dir];
+            int ny = y + dy[dir];
+            if(nx<1 || nx>r || ny<1 || ny>c){
+                if(dir%2==0) dir++;
+                else dir--;
+            }
         }
 
+        public void dead(){
+            if(isDead()) return;
+            shArr[x][y].remove(getIndex());
+            this.x = -1;
+            this.y = -1;
+        }
+
+        public int getIndex(){
+            int j = 0;
+            for(int l : shArr[x][y]){
+                if(l == size) break;
+                j++;
+            }
+            return j;
+        }
 
         public void move(){
+            if(isDead()) return;
             int dist = this.speed;
+            shArr[x][y].remove(getIndex());
             while(dist-->0){
-                if(isBound()){
-                    if(dir%2==0) dir++;
-                    else dir--;
-                }
+                ifTurn();
                 x += dx[dir];
                 y += dy[dir];
             }
+            shArr[x][y].add(size);
         }
 
         public String toString(){
