@@ -2,6 +2,7 @@ package boj.P13460;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 /*
@@ -47,57 +48,77 @@ public class Main {
         dfs(0,red,blue);
         System.out.println(answer>10?-1:answer);
 
+
     }
 
-    static void dfs(int cnt,int[] r,int[] b){
+    static void dfs(int cnt, int[] r, int[] b){
         if(cnt > MAX_CNT) return;
-        int ret = check(r,b);
-        if(ret == -1) return;
-        else if(ret == 1) {
+        int flag = check(r,b);
+        if(flag == 1) {
             answer = Math.min(answer,cnt);
             return;
         }
-        else{ // ret == 0
+        else if(flag == 0){
             for(int dir=0;dir<4;dir++){
                 int[] nxt = move(dir,r,b);
-                dfs(cnt+1,new int[]{nxt[0],nxt[1]},new int[]{nxt[2],nxt[3]});
+                dfs(cnt + 1, new int[]{nxt[0],nxt[1]},new int[]{nxt[2],nxt[3]});
             }
-
         }
+
 
     }
     static int[] move(int dir,int[] r,int[] b){
         int[] cur = {r[0],r[1],b[0],b[1]};
-        boolean redIsMoved = true,blueIsMoved = true;
-        while(redIsMoved || blueIsMoved){
-            int[] next = {cur[0]+dx[dir],cur[1]+dy[dir],cur[2]+dx[dir],cur[3]+dy[dir]};
-            redIsMoved = justOneMove(cur, next, 0, 1, 2, 3);
-            blueIsMoved = justOneMove(cur, next, 2, 3, 0, 1);
+        boolean redNotMoved=false,blueNotMoved=false;
+
+        while(true){
+            int[] nxt = Arrays.copyOfRange(cur,0,4);
+            if(cur[0]!=-1){
+                nxt[0] += dx[dir];
+                nxt[1] += dy[dir];
+            }
+            if(cur[2]!=-1){
+                nxt[2] += dx[dir];
+                nxt[3] += dy[dir];
+            }
+            // 현재위치가 탈출구임
+            if(nxt[0]==-1) redNotMoved = true;
+            // 다음위치가 벽이거나 이미 구슬이 있거나 탈출구인경우
+            else if(arr[nxt[0]][nxt[1]]=='#' || arr[nxt[0]][nxt[1]]=='O' || (nxt[0]==cur[2] && nxt[1]==cur[3])){
+                // 탈출구인경우
+                if(arr[nxt[0]][nxt[1]]=='O'){
+                    cur[0]=-1;cur[1]=-1;
+                }
+                redNotMoved = true;
+            }
+            else {
+                cur[0] = nxt[0];cur[1]=nxt[1];
+                redNotMoved = false; // 다음위치에 움직일수 있는 경우
+            }
+            if(nxt[2]==-1) blueNotMoved = true;
+            // 다음위치가 벽이거나 이미 구슬이 있거나 탈출구인경우
+            else if(arr[nxt[2]][nxt[3]]=='#' || arr[nxt[2]][nxt[3]]=='O' || (nxt[2]==cur[0] && nxt[3]==cur[1])){
+                // 탈출구인경우
+                if(arr[nxt[2]][nxt[3]]=='O'){
+                    cur[2]=-1;cur[3]=-1;
+                }
+                blueNotMoved = true;
+            }else{
+                cur[2] = nxt[2];cur[3]=nxt[3];
+                blueNotMoved = false;
+            }
+            if(redNotMoved && blueNotMoved) break;
         }
+
         return cur;
     }
 
-    private static boolean justOneMove(int[] cur, int[] next, int i, int i2, int i3, int i4) {
-        boolean isMoved;
-        if (arr[next[i]][next[i2]] == '#') isMoved = false;
-        else if (arr[next[i]][next[i2]] == 'O') {
-            isMoved = false;
-            cur[i] = next[i];
-            cur[i2] = next[i2];
-        } else if (next[i] == cur[i3] && next[i2] == cur[i4]) isMoved = false;
-        else {
-            isMoved = true;
-            cur[i] = next[i];
-            cur[i2] = next[i2];
-        }
-        return isMoved;
+    static int check(int[] r,int[] b){
+        if(b[0] == -1) return -1;
+        else if(r[0] == -1) return 1;
+        else return 0;
     }
 
-    static int check(int[] r,int[] b){
-        if(arr[b[0]][b[1]]=='O') return -1; // no more search
-        else if(arr[r[0]][r[1]]=='O') return 1; // found
-        else return 0; // more search
-    }
 
     static class Fs{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
