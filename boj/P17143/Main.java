@@ -2,10 +2,8 @@ package boj.P17143;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
+
 /*
 * 첫째 줄에 격자판의 크기 R, C와 상어의 수 M이 주어진다. (2 ≤ R, C ≤ 100, 0 ≤ M ≤ R×C)
 
@@ -25,11 +23,12 @@ import java.util.StringTokenizer;
 3 6 2 1 2
 2 2 2 3 5
 * */
-// 낚시왕
+// 낚시왕 ver2
 public class Main {
     static Fs fs = new Fs();
     static int r,c,m;
     static ArrayList<Integer>[][] shArr = new ArrayList[101][101];
+    static HashMap<Integer,Integer> sizeToId = new HashMap<>();
     static int[] dx = {-1,1,0,0};
     static int[] dy = {0,0,1,-1};
     static Shark[] sh = new Shark[10001];
@@ -47,6 +46,7 @@ public class Main {
             if(d==1 || d==2) sh[i] = new Shark(i,x,y,s%((r-1)*2),d-1,z);
             else sh[i] = new Shark(i,x,y,s%((c-1)*2),d-1,z);
             shArr[x][y].add(z);
+            sizeToId.put(z,i);
         }
 
 
@@ -67,12 +67,10 @@ public class Main {
         for(int i=1;i<=r;i++){
             for(int j=1;j<=c;j++){
                 if(shArr[i][j].size() > 1){
-                    int maxSize = shArr[i][j].stream().mapToInt(x -> x).max().getAsInt();
-                    for(int l=0;l<m;l++){
-                        if(sh[l].x == i && sh[l].y==j && sh[l].size != maxSize){
-                            sh[l].dead();
-                        }
-                    }
+                    Collections.sort(shArr[i][j]);
+                    ArrayList<Integer> w = new ArrayList<>();
+                    for(int l=0;l<shArr[i][j].size()-1;l++) w.add(shArr[i][j].get(l));
+                    for(int l : w) sh[sizeToId.get(l)].dead();
                 }
             }
         }
@@ -83,12 +81,8 @@ public class Main {
             if(shArr[i][col].size() > 0) {
                 int size = shArr[i][col].get(0);
                 answer += size;
-                for(int j=0;j<m;j++){
-                    if(sh[j].size == size){
-                        sh[j].dead();
-                        return;
-                    }
-                }
+                sh[sizeToId.get(size)].dead();
+                return;
             }
         }
     }
