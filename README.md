@@ -61,3 +61,9 @@
 - [**구슬탈출2**](https://www.acmicpc.net/problem/13460)
 - [**벽 부수고 이동하기2**](https://www.acmicpc.net/problem/14442)
 - [**낚시왕**](https://www.acmicpc.net/problem/17143) 
+
+**- 8/14 까지 **
+- [**1, 2, 3 더하기 4**](https://www.acmicpc.net/problem/15989)
+- [**BFS 스페셜 저지**](https://www.acmicpc.net/problem/16940)
+- [**벽 부수고 이동하기**](https://www.acmicpc.net/problem/2206)
+- [**어른 상어**](https://www.acmicpc.net/problem/19237)
