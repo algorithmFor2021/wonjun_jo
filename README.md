@@ -67,3 +67,9 @@
 - [**BFS 스페셜 저지**](https://www.acmicpc.net/problem/16940)
 - [**벽 부수고 이동하기**](https://www.acmicpc.net/problem/2206)
 - [**어른 상어**](https://www.acmicpc.net/problem/19237)
+
+**- 8/21 까지 **
+- [**스도쿠**](https://www.acmicpc.net/problem/2580)
+- [**아기상어**](https://www.acmicpc.net/problem/17086)
+- [**벽 부수고 이동하기4**](https://www.acmicpc.net/problem/16946)
+- [**DFS스페셜저지**](https://www.acmicpc.net/problem/16964)
