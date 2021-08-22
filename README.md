@@ -73,3 +73,9 @@
 - [**아기상어**](https://www.acmicpc.net/problem/17086)
 - [**벽 부수고 이동하기4**](https://www.acmicpc.net/problem/16946)
 - [**DFS스페셜저지**](https://www.acmicpc.net/problem/16964)
+
+**- 8/28 까지 **
+- [**4연산**](https://www.acmicpc.net/problem/14395)
+- [**동전2**](https://www.acmicpc.net/problem/2294)
+- [**돌그룹**](https://www.acmicpc.net/problem/12886)
+- [**커피숍2**](https://www.acmicpc.net/problem/1275)
