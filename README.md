@@ -79,3 +79,7 @@
 - [**동전2**](https://www.acmicpc.net/problem/2294)
 - [**돌그룹**](https://www.acmicpc.net/problem/12886)
 - [**커피숍2**](https://www.acmicpc.net/problem/1275)
+
+**- 9/4 까지 **
+- [**원판돌리기**](https://www.acmicpc.net/problem/17822)
+- [**최소값과최대값**](https://www.acmicpc.net/problem/2357)
