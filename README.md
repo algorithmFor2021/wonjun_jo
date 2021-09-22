@@ -80,6 +80,9 @@
 - [**돌그룹**](https://www.acmicpc.net/problem/12886)
 - [**커피숍2**](https://www.acmicpc.net/problem/1275)
 
-**- 9/4 까지 **
-- [**원판돌리기**](https://www.acmicpc.net/problem/17822)
-- [**최소값과최대값**](https://www.acmicpc.net/problem/2357)
+**- 9/25 까지 **
+- [**마법사 상어와 비바라기**](https://www.acmicpc.net/problem/21610)
+- [**상어 초등학교**](https://www.acmicpc.net/problem/21608)
+- [**전력난**](https://www.acmicpc.net/problem/6497)
+- [**학교 탐방하기**](https://www.acmicpc.net/problem/13418)
+- [**상어 중학교**](https://www.acmicpc.net/problem/21609)
