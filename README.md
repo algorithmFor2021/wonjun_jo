@@ -86,3 +86,8 @@
 - [**전력난**](https://www.acmicpc.net/problem/6497)
 - [**학교 탐방하기**](https://www.acmicpc.net/problem/13418)
 - [**상어 중학교**](https://www.acmicpc.net/problem/21609)
+
+**- 10/02 까지 **
+- [**로봇 시뮬레이션기**](https://www.acmicpc.net/problem/2174)
+- [**새로운 게임2**](https://www.acmicpc.net/problem/17837)
+- [**지하철**](https://www.acmicpc.net/problem/17940)
