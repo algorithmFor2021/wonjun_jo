@@ -91,3 +91,8 @@
 - [**로봇 시뮬레이션기**](https://www.acmicpc.net/problem/2174)
 - [**새로운 게임2**](https://www.acmicpc.net/problem/17837)
 - [**지하철**](https://www.acmicpc.net/problem/17940)
+
+**- 10/09 까지 **
+- [**행렬 테두리 회전하기**](https://programmers.co.kr/learn/courses/30/lessons/77485)
+- [**자물쇠와 열쇠**](https://programmers.co.kr/learn/courses/30/lessons/60059)
+- [**뱀**](https://www.acmicpc.net/problem/3190)
