@@ -96,3 +96,8 @@
 - [**행렬 테두리 회전하기**](https://programmers.co.kr/learn/courses/30/lessons/77485)
 - [**자물쇠와 열쇠**](https://programmers.co.kr/learn/courses/30/lessons/60059)
 - [**뱀**](https://www.acmicpc.net/problem/3190)
+
+**- 10/22 까지 **
+- [**2048(Hard)**](https://www.acmicpc.net/problem/12094)
+- [**큐빙**](https://www.acmicpc.net/problem/5373)
+- [**알약**](https://www.acmicpc.net/problem/4811)
