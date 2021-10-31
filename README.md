@@ -101,3 +101,8 @@
 - [**2048(Hard)**](https://www.acmicpc.net/problem/12094)
 - [**큐빙**](https://www.acmicpc.net/problem/5373)
 - [**알약**](https://www.acmicpc.net/problem/4811)
+
+**- 10/31 까지 **
+- [**2048(Hard)**](https://www.acmicpc.net/problem/12094)
+- [**큐빙**](https://www.acmicpc.net/problem/5373)
+- [**신년파티**](https://www.acmicpc.net/problem/1623)
