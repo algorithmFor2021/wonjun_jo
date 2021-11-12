@@ -106,3 +106,7 @@
 - [**2048(Hard)**](https://www.acmicpc.net/problem/12094)
 - [**큐빙**](https://www.acmicpc.net/problem/5373)
 - [**신년파티**](https://www.acmicpc.net/problem/1623)
+
+**- 11/13 까지**
+- [**컨베이어 벨트 위의 로봇**](https://www.acmicpc.net/problem/20055)
+- [**경사로**](https://www.acmicpc.net/problem/14890)
