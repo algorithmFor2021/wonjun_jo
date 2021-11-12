@@ -6,63 +6,86 @@ import java.util.StringTokenizer;
 
 public class Main {
     static Fs fs = new Fs();
-    static int n,l;
-    static int[][] arr = new int[101][101];
-    static int answer = 0;
+    static int n,k;
+    static int[] durable;
+    static boolean[] robot;
 
     public static void main(String[] args) throws Exception{
         input();
-        solve();
-        System.out.println(answer);
+        System.out.println(solve());
     }
 
     private static int solve(){
-        for(int i=0;i<n;i++){
-            if(checkIfPossible(i,true)) answer++;
-            if(checkIfPossible(i,false)) answer++;
+        int cnt = 1;
+        while(true) {
+            rotate();
+            move();
+            putRobot();
+            if(checkExit()) break;
+            cnt++;
         }
-        return answer;
+        return cnt;
     }
 
-    private static boolean checkIfPossible(int k,boolean isRow){
-        int[] temp = new int[n];
-        boolean[] ch = new boolean[n];
-        if(isRow) for(int i=0;i<n;i++) temp[i] = arr[k][i];
-        else for(int i=0;i<n;i++) temp[i] = arr[i][k];
-
-        for(int i=0;i<n-1;i++) {
-            int dif = temp[i] - temp[i+1];
-            if(Math.abs(dif) > 1) return false;
-            if(dif == 1 && !rangeCheck(temp,ch,i+1,i+l)) return false;
-            if(dif == -1 && !rangeCheck(temp,ch,i-l+1,i)) return false;
+    private static boolean checkExit(){
+        int tmp = 0;
+        for(int i=0;i<2*n;i++){
+            if(durable[i] == 0){
+                tmp += 1;
+            }
         }
-        return true;
-
+        return tmp >= k;
     }
 
-    private static boolean rangeCheck(int[] temp,boolean[] ch,int s,int e){
-        // 경사로 놓을 공간은 있는지
-        if(s<0 || s>=n || e<0 || e>=n) return false;
-        // 이미 경사로 놓여있는지
-        for(int i=s;i<=e;i++){if(ch[i]) return false;}
-        // 경사로놓을 곳의 높이는 서로 다 같은지
-        for(int i=s;i<e;i++) if(temp[i] != temp[i+1]) return false;
-        // 경사로 놓고 체크해두기
-        for(int i=s;i<=e;i++) ch[i] = true;
-
-        return true;
+    private static void putRobot(){
+        if(durable[0] >  0) {
+            robot[0] = true;
+            durable[0] -= 1;
+        }
     }
 
+    private static void move(){
+        for(int i=n-2;i>=0;i--){
+            if(i==n-2 && robot[i]){
+                if(durable[i+1] > 0) {
+                    durable[i+1] -= 1;
+                    robot[i] = false;
+                }
+            }
+            else{
+                if(robot[i] && durable[i+1]>0 && !robot[i+1]){
+                    robot[i+1] = true;
+                    robot[i] = false;
+                    durable[i+1] -= 1;
+                }
+            }
+        }
+    }
 
+    private static void rotate(){
+        for(int i=n-2;i>=0;i--){
+            if(i==n-2 && robot[i]) robot[i] = false;
+            else{
+                if(robot[i]) {
+                    robot[i] = false;
+                    robot[i+1] = true;
+                }
+            }
+        }
+
+        int[] nextDurable = new int[2*n];
+        for(int i=0;i<2*n;i++){
+            nextDurable[(i+1)%(2*n)] = durable[i];
+        }
+        durable = nextDurable;
+    }
 
     private static void input() throws Exception {
         n = fs.nextInt();
-        l = fs.nextInt();
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                arr[i][j] = fs.nextInt();
-            }
-        }
+        k = fs.nextInt();
+        durable = new int[2*n];
+        robot = new boolean[n];
+        for(int i=0;i<2*n;i++) durable[i] = fs.nextInt();
     }
 
     static class Fs{
@@ -73,7 +96,6 @@ public class Main {
             if(!st.hasMoreElements()) st = new StringTokenizer(br.readLine());
             return st.nextToken();
         }
-
         public int nextInt() throws Exception{
             return Integer.parseInt(next());
         }
