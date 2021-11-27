@@ -115,3 +115,8 @@
 - [**리틀 프렌즈 사천성**](https://programmers.co.kr/learn/courses/30/lessons/1836)
 - [**다단계 칫솔 판매**](https://programmers.co.kr/learn/courses/30/lessons/77486)
 - [**외벽점검**](https://programmers.co.kr/learn/courses/30/lessons/60062)
+
+**- 12/4 까지**
+- [**셔틀버스**](https://programmers.co.kr/learn/courses/30/lessons/17678)
+- [**보석쇼핑**](https://programmers.co.kr/learn/courses/30/lessons/67258)
+- [**입국심사**](https://programmers.co.kr/learn/courses/30/lessons/43238)
