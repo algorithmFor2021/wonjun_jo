@@ -110,6 +110,8 @@
 **- 11/13 까지**
 - [**컨베이어 벨트 위의 로봇**](https://www.acmicpc.net/problem/20055)
 - [**경사로**](https://www.acmicpc.net/problem/14890)
+
+**- 11/26 까지**
 - [**리틀 프렌즈 사천성**](https://programmers.co.kr/learn/courses/30/lessons/1836)
 - [**다단계 칫솔 판매**](https://programmers.co.kr/learn/courses/30/lessons/77486)
 - [**외벽점검**](https://programmers.co.kr/learn/courses/30/lessons/60062)
