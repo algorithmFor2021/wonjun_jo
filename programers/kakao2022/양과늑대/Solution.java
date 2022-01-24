@@ -13,33 +13,29 @@ public class Solution {
         for(int [] e : _edges){
             adj[e[0]].add(e[1]);
         }
-        List<Integer> list = new ArrayList<>();
-        list.add(0);
-        dfs(0,0,0,list);
+
+        dfs(1,0,0,new ArrayList<>());
 
         System.out.println(maxS);
         return maxS;
     }
     // 현재 상태에서 방문할 수 있는 모든 노드를 방문 하는 것이 목표
     public void dfs(int s, int w, int idx, List<Integer> next){
-        if(info[idx]==0) s+= 1;
-        else w += 1;
-
-        if(s <= w) return;
-
         maxS = Math.max(s,maxS);
 
-        ArrayList<Integer> tmp = new ArrayList<>();
-        // 이때까지
-        tmp.addAll(next);
-        tmp.addAll(adj[idx]);
-        tmp.remove(Integer.valueOf(idx));
-        System.out.println(tmp);
-        for(int nxt : tmp){
-            dfs(s,w,nxt,tmp);
+        List<Integer> list = new ArrayList<>();
+        // 내 자녀들은 다음에 방문 해야함
+        list.addAll(adj[idx]);
+        // 부모 노드"들" 에서 다음으로 방문해야 할 노드들도 방문해야 하기 때문에 추가
+        list.addAll(next);
+        // 현재노드는 제거
+        list.remove(Integer.valueOf(idx));
+
+        for(int l : list){
+            int nextS = s + (info[l]==0?1:0);
+            int nextW = w + (info[l]==1?1:0);
+            if(nextS > nextW) dfs(nextS,nextW, l,list);
         }
-
-
     }
     public static void main(String[] args) {
         new Solution().solution(new int[]{0,0,1,1,1,0,1,0,1,0,1,1},
