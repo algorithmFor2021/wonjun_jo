@@ -5,6 +5,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
+/**
+ * Main 설명 : 최소 스패닝 트리
+ * @author jowonjun
+ * @version 1.0.0
+ * 작성일 : 2022/02/01
+**/
 
 public class Main {
     static Fs fs = new Fs();
