@@ -1,7 +1,12 @@
 package programers.kakao2022.사라지는발판;
 
 import java.util.*;
-
+/**
+ * Solution 설명 : not solved
+ * @author jowonjun
+ * @version 1.0.0
+ * 작성일 : 2022/02/02
+**/
 public class Solution {
     static int[] dx = {-1,1,0,0};
     static int[] dy = {0,0,-1,1};
