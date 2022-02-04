@@ -2,7 +2,7 @@ package programers.kakao2022.사라지는발판;
 
 import java.util.*;
 /**
- * Solution 설명 : 사라지는 발판
+ * Solution 설명 : not sovle
  * @author jowonjun
  * @version 1.0.0
  * 작성일 : 2022/02/02
