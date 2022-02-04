@@ -1,94 +1,93 @@
 package programers.kakao2022.사라지는발판;
 
 import java.util.*;
-/**
- * Solution 설명 : not sovle
- * @author jowonjun
- * @version 1.0.0
- * 작성일 : 2022/02/02
-**/
-public class Solution {
+
+class Solution{
+    static int n,m;
+    static int[][] board;
     static int[] dx = {-1,1,0,0};
     static int[] dy = {0,0,-1,1};
-    static int n;
-    static int m;
-    static int answer = Integer.MIN_VALUE;
 
-    public static void main(String[] args) {
-        System.out.println(new Solution().solution(new int[][]{
-                {1,1,1}
-                ,{1,1,1}
-                ,{1,1,1}
-        },new int[]{1,0},new int[]{1,2}));
-    }
-
-    public int solution(int[][] board, int[] aloc, int[] bloc) {
+    public int solution(int[][] _board, int[] aloc, int[] bloc) {
+        board = _board;
         n = board.length;
         m = board[0].length;
-        dfs(board,aloc[0],aloc[1],bloc[0],bloc[1],0);
-        return answer;
+
+        return dfs(aloc[0],aloc[1],bloc[0],bloc[1],0).cnt;
     }
 
-    Pair dfs(int[][] board,int ax,int ay,int bx,int by,int idx){
+    // 나의 위치 : x1,y1
+    // 상대 위치 : x2,y2
+    static Pair dfs(int x1,int y1,int x2,int y2,int idx){
+        boolean winFlag = false;
+        int minCnt = 99999;
+        int maxCnt = 0;
 
-        if(ax==bx && ay==by){
-            answer = Math.max(answer,idx);
-            if(idx%2==0){
-                return new Pair(1,0);
-            }
-            return new Pair(0,1);
-        }
+        if(!check(x1,y1)) return new Pair(false,idx);
+        if(x1==x2 && y1==y2) return new Pair(true,idx+1);
 
-        boolean lastFlag = true;
-        Pair ret = new Pair(0,0);
-        int _x = (idx%2==0?ax:bx);
-        int _y = (idx%2==0?ay:by);
+
         for(int i=0;i<4;i++){
-            int nx = dx[i] + _x;
-            int ny = dy[i] + _y;
-            if(nextPossible(board,nx,ny)){
-                lastFlag = false;
-                board[_x][_y] = 0;
-                if(idx%2==0) {
-                    ret.add(dfs(board,nx,ny,bx,by,idx+1));
-                }else{
-                    ret.add(dfs(board,ax,ay,nx,ny,idx+1));
+            int nx = x1 + dx[i];
+            int ny = y1 + dy[i];
+
+            if(checkRange(nx,ny)){
+                board[x1][y1] = 0;
+                Pair p = dfs(x2,y2,nx,ny,idx+1);
+                // 상대가 진 경우 == 내가 이긴 경우
+                if(!p.flag) {
+                    winFlag = true;
+                    minCnt = Math.min(minCnt,p.cnt);
                 }
-                board[_x][_y] = 1;
+                // 상대가 이긴 경우
+                else{
+                    maxCnt = Math.max(maxCnt,p.cnt);
+                }
+                board[x1][y1] = 1;
             }
-        }
-        if(lastFlag){
-            // Bwin
-            if(idx%2==0){
-                return new Pair(0,1);
-            }else{
-                return new Pair(1,0);
-            }
-        }else{
-            if(ret.aWin ==0 || ret.bWin == 0){
-                answer = Math.max(answer,idx);
-            }
-            return ret;
         }
 
+        if(winFlag) return new Pair(true,minCnt);
+        else return new Pair(false,maxCnt);
+    }
+    static boolean check(int curx,int cury){
+        for(int i=0;i<4;i++){
+            int nx = curx + dx[i];
+            int ny = cury + dy[i];
+            if(checkRange(nx,ny)) return true;
+        }
+        return false;
+    }
+
+    static boolean checkRange(int x,int y){
+        return x>=0 && x<n && y>=0 && y<m && board[x][y]==1;
     }
 
     static class Pair{
-        int aWin;
-        int bWin;
+        boolean flag;
+        int cnt;
 
-        public Pair(int aWin, int bWin) {
-            this.aWin = aWin;
-            this.bWin = bWin;
+        public Pair(boolean flag, int cnt) {
+            this.flag = flag;
+            this.cnt = cnt;
         }
 
-        public void add(Pair p){
-            this.aWin += p.aWin;
-            this.bWin += p.bWin;
+        @Override
+        public String toString() {
+            return "Pair{" +
+                    "flag=" + flag +
+                    ", cnt=" + cnt +
+                    '}';
         }
     }
-    boolean nextPossible(int[][] board,int x,int y){
-        return x>=0 && x<n && y>=0 && y<m && board[x][y]==1;
+
+    public static void main(String[] args) {
+        System.out.println(new Solution().solution(
+                new int[][]{{1,1,1},{1,1,1},{1,1,1}}
+                ,new int[]{1,0}
+                ,new int[]{1,2}
+        ));
     }
+
 
 }
