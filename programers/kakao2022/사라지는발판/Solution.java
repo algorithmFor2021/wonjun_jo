@@ -23,10 +23,12 @@ class Solution{
         int minCnt = 99999;
         int maxCnt = 0;
 
+        //leaf node
         if(!check(x1,y1)) return new Pair(false,idx);
         if(x1==x2 && y1==y2) return new Pair(true,idx+1);
 
 
+        // middle
         for(int i=0;i<4;i++){
             int nx = x1 + dx[i];
             int ny = y1 + dy[i];
