@@ -16,4 +16,4 @@ class Solution {
         for(int i=0;i<a.length;i++) if(!(leftDp[i] < a[i] && rightDp[i] < a[i])) answer++;
         return answer;
     }
-}}
+}
