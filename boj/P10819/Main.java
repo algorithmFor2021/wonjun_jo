@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 public class Main {
     static Fs fs = new Fs();
     static int n;
-    static int cnt= 0;
     static int[] arr = new int[10];
     static int answer = Integer.MIN_VALUE;
 
@@ -16,7 +15,6 @@ public class Main {
         input();
         dfs(0,new boolean[10],new ArrayList<>());
         System.out.println(answer);
-        System.out.println(cnt);
     }
 
     static void input() throws Exception{
@@ -28,8 +26,7 @@ public class Main {
 
     static void dfs(int idx , boolean[] visit , ArrayList<Integer> list) {
         if(idx == n) {
-            answer = Math.max(answer,cal(list));
-            cnt++;
+            answer = Math.max(answer, cal(list));
             return;
         }
 
@@ -38,7 +35,7 @@ public class Main {
                 visit[i] = true;
                 list.add(arr[i]);
                 dfs(idx+1,visit,list);
-                list.remove(Integer.valueOf(arr[i]));
+                list.remove(list.size()-1);
                 visit[i] = false;
             }
         }
