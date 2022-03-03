@@ -4,7 +4,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Stack;
 import java.util.StringTokenizer;
-
+/**
+ * Main 설명 : 가장 긴 부분 수열 4
+ * @author jowonjun
+ * @version 1.0.0
+ * 작성일 : 2022/03/03
+**/
 public class Main {
     static Fs fs = new Fs();
     static class Fs {
