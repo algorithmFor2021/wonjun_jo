@@ -1,5 +1,11 @@
 package programers.위클리챌린지.풍선터뜨리기;
 
+/**
+ * Solution 설명 : 풍선 터뜨리기
+ * @author jowonjun
+ * @version 1.0.0
+ * 작성일 : 2022/03/04
+**/
 class Solution {
     public int solution(int[] a) {
         int answer = 0;
