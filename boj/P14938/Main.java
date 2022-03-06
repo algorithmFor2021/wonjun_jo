@@ -19,12 +19,14 @@ public class Main {
         }
         for(int i=1;i<=n;i++) {
             for(int j=1;j<=n;j++) {
+                if(i==j) continue;
                 adj[i][j] = INF;
             }
         }
         for(int i=0;i<r;i++) {
             int a = fs.nInt();
             int b = fs.nInt();
+
             adj[a][b] = fs.nInt();
             adj[b][a] = adj[a][b];
         }
@@ -32,8 +34,8 @@ public class Main {
         for(int i=1;i<=n;i++) {
             for(int j=1;j<=n;j++) {
                 for(int k=1;k<=n;k++) {
-                    if(i!=j && j!=k && i!=k && adj[i][j] != INF && adj[j][k] != INF) {
-                        adj[i][k] = Math.min(adj[i][j]+adj[j][k],adj[i][k]);
+                    if(i!=j && j!=k && k!=i && adj[j][i]!=INF && adj[i][k]!=INF) {
+                        adj[j][k] = Math.min(adj[j][i] + adj[i][k], adj[j][k]);
                     }
                 }
             }
@@ -41,9 +43,9 @@ public class Main {
 
         int answer = 0;
         for(int i=1;i<=n;i++) {
-            int s = items[i];
+            int s = 0;
             for(int j=1;j<=n;j++){
-                if(i != j && adj[i][j] <= m) {
+                if(adj[i][j] <= m) {
                     s += items[j];
                 }
             }
