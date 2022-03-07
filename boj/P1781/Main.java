@@ -4,6 +4,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 
+/**
+ * Main 설명 :
+ * @author jowonjun
+ * @version 1.0.0
+ * 작성일 : 2022/03/07
+**/
 public class Main {
     static Fs fs = new Fs();
 
