@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 /**
- * Main 설명 :
+ * Main 설명 : 컵라면 그리디
  * @author jowonjun
  * @version 1.0.0
  * 작성일 : 2022/03/07
