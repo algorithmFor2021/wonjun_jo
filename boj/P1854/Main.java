@@ -30,7 +30,8 @@ public class Main {
 
             for(Node next : adj[cur.to]) {
                 // 갱신이 되었을 경우에만 pq 에 다음을 넣음
-                if(distQueue[next.to].size() < k  || distQueue[next.to].peek() > cur.dist + next.dist) {
+                if(distQueue[next.to].size() < k  || distQueue[next.to].peek() > cur.dist + next.dist
+                ) {
                     if(distQueue[next.to].size() == k) distQueue[next.to].poll();
                     distQueue[next.to].add(cur.dist + next.dist);
                     pq.add(new Node(next.to,cur.dist + next.dist));
