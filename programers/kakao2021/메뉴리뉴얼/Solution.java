@@ -5,6 +5,7 @@ public class Solution {
     static int[] words = new int[20];
     static int[] courseMax = new int[11];
     static List<Integer>[] courseList = new ArrayList[11];
+
     public String[] solution(String[] orders, int[] course) {
         for(int i=0;i<11;i++) courseList[i] = new ArrayList<>();
         makeWords(orders);
@@ -37,9 +38,7 @@ public class Solution {
         StringBuilder sb = new StringBuilder();
         int idx = 0;
         for(int i=1;i<1<<26;i<<=1) {
-            if((a&i)>0) {
-                sb.append((char)('A'+idx));
-            }
+            if((a&i)>0) sb.append((char)('A'+idx));
             idx++;
         }
         return sb.toString();
