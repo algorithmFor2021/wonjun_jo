@@ -1,71 +1,58 @@
 package programers.kakao2021.메뉴리뉴얼;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Solution {
-
-    static List<Character> menu = new ArrayList<>();
-    static String[] orders;
+    static int[] words = new int[20];
     static int[] courseMax = new int[11];
-    static List<String>[] result = new ArrayList[11];
-
-    public String[] solution(String[] _orders, int[] course) {
-        orders = _orders;
-        for(int i=0;i<11;i++) result[i] = new ArrayList<>();
-        menu = String.join("", _orders)
-                .chars()
-                .mapToObj(c -> (char) c)
-                .distinct().collect(Collectors.toList());
-
-        Arrays.stream(course)
-                .forEach(c -> {
-                    dfs(0,c,new ArrayList<>());
-                });
-
-        List<String> ans = new ArrayList<>();
-        for(List<String> l : result) ans.addAll(l);
-        ans.sort(String::compareTo);
-        return ans.toArray(new String[0]);
-
-    }
-    // course = 코스 개수
-    public static void dfs(int idx, int course,List<Character> list) {
-        if(list.size() == course) {
-            int num = 0;
-            for(String o : orders) if(check(o,list)) num++;
-            if(num < 2) return;
-
-            StringBuilder sb = new StringBuilder();
-            Collections.sort(list);
-            for(char c : list) sb.append(c);
-
-            if(num >= courseMax[course]) {
-                if (num > courseMax[course]) result[course] = new ArrayList<>();
-                courseMax[course] = num;
-                result[course].add(sb.toString());
-            }
-            return;
-        }
-        if(idx == menu.size()) return;
-
-        list.add(menu.get(idx));
-        dfs(idx+1,course,list);
-        list.remove(list.size()-1);
-        dfs(idx+1,course,list);
-
-    }
-
-    public static boolean check(String s,List<Character> list) {
-        int r = 0;
-        for(char l : list) {
-            for(char ss : s.toCharArray()) {
-                if(l == ss) r++;
+    static List<Integer>[] courseList = new ArrayList[11];
+    public String[] solution(String[] orders, int[] course) {
+        for(int i=0;i<11;i++) courseList[i] = new ArrayList<>();
+        makeWords(orders);
+        for(int c : course) {
+            for(int i=1;i<1<<26;i++) {
+                if(Integer.bitCount(i) == c) {
+                    int mask = i;
+                    int cnt = 0;
+                    for(int w : words) if ((mask & w) == mask) cnt++;
+                    if(cnt < 2) continue;
+                    if(courseMax[c] <= cnt) {
+                        if(courseMax[c] < cnt) courseList[c] = new ArrayList();
+                        courseMax[c] = cnt;
+                        courseList[c].add(mask);
+                    }
+                }
             }
         }
-        return r == list.size();
+        return makeAns();
     }
 
+    public String[] makeAns() {
+        List<String> ret = new ArrayList<>();
+        for(List<Integer> l : courseList) for(int i : l) ret.add(makeString(i));
+        Collections.sort(ret, String::compareTo);
+        return ret.toArray(new String[0]);
+    }
 
+    public String makeString(int a) {
+        StringBuilder sb = new StringBuilder();
+        int idx = 0;
+        for(int i=1;i<1<<26;i<<=1) {
+            if((a&i)>0) {
+                sb.append((char)('A'+idx));
+            }
+            idx++;
+        }
+        return sb.toString();
+    }
+
+    public void makeWords(String[] orders) {
+        int idx = 0;
+        for(String o : orders) {
+            int n = 0;
+            for(char c : o.toCharArray()) n += 1<<(c-'A');
+            words[idx++] = n;
+        }
+    }
 
     public static void main(String[] args) {
         for(String s : new Solution().solution(new String[]{
