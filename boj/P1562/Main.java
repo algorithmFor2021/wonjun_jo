@@ -5,16 +5,19 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
+
     static Fs fs = new Fs();
     static int n;
     static int MOD = 1000000000;
     static int[][][] dp = new int[101][10][1<<10];
+
     public static void main(String[] args) throws Exception{
 
         n = fs.nInt();
         System.out.println(calc());
 
     }
+
     private static long calc() {
         long sum=0;
         int i, j, k, bit;
