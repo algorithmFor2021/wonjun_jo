@@ -22,10 +22,6 @@ public class Main {
             System.out.println(Long.parseLong(ans));
         }
 
-        for(int i=1;i<100;){
-            System.out.println(i + " * " + i + " * " + i + " = " + (i*i*i));
-            i += 10;
-        }
     }
 
     static void dfs(StringBuilder sb) {
