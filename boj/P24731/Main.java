@@ -4,6 +4,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+/**
+ * Main 설명 : 정수론 문제??
+ * @author jowonjun
+ * @version 1.0.0
+ * 작성일 : 2022/03/25
+**/
 public class Main {
     static Fs fs = new Fs();
     static long MOD = 1000003;
