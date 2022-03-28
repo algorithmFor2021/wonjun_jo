@@ -47,7 +47,7 @@ public class Main {
     static StringBuilder make(int v) {
         StringBuilder sb = new StringBuilder();
 
-        for(int i=2;i<=(int)Math.sqrt(v);i++) {
+        for(int i=2;i<=v/2;i++) {
             if(v%i==0) sb.append(i).append(" ");
         }
         sb.append(v).append("\n");
