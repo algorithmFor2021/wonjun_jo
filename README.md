@@ -14,3 +14,4 @@ I mainly solve algorithms in boj and programmers. <br>
 
 [![Solved.ac프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=wj100213)](https://solved.ac/wj100213)
 
+- Goal : diamond!
