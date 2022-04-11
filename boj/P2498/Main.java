@@ -6,7 +6,7 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 /**
- * Main 설명 : 탑
+ * Main 설명 : 탑 쉬운 버전
  * @author jowonjun
  * @version 1.0.0
  * 작성일 : 2022/04/10
