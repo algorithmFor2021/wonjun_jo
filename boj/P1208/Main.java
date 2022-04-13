@@ -20,9 +20,9 @@ public class Main {
     static int[] arr = new int[40];
 
     static ArrayList<Integer> left = new ArrayList<>();
-    static HashMap<Integer,Long> lmap = new HashMap<>();
+    static HashMap<Integer,Long> lMap = new HashMap<>();
     static ArrayList<Integer> right = new ArrayList<>();
-    static HashMap<Integer,Long> rmap = new HashMap<>();
+    static HashMap<Integer,Long> rMap = new HashMap<>();
 
     public static void main(String[] args) throws Exception{
         n = fs.nInt();
@@ -39,8 +39,8 @@ public class Main {
 
         for(int l : left) {
             int target = s - l;
-            if(rmap.containsKey(target)) {
-                ans += (lmap.get(l) * rmap.get(target));
+            if(rMap.containsKey(target)) {
+                ans += (lMap.get(l) * rMap.get(target));
             }
         }
 
@@ -51,18 +51,18 @@ public class Main {
     static void makeArrayList(int st,int ed,int sum,boolean isLeft) {
         if(st == ed) {
             if(isLeft) {
-                if(lmap.containsKey(sum)) {
-                    lmap.replace(sum,lmap.get(sum)+1);
+                if(lMap.containsKey(sum)) {
+                    lMap.replace(sum, lMap.get(sum)+1);
                 }else {
                     left.add(sum);
-                    lmap.put(sum,1L);
+                    lMap.put(sum,1L);
                 }
             }
             else {
-                if(rmap.containsKey(sum)) {
-                    rmap.replace(sum,rmap.get(sum)+1);
+                if(rMap.containsKey(sum)) {
+                    rMap.replace(sum, rMap.get(sum)+1);
                 }else {
-                    rmap.put(sum,1L);
+                    rMap.put(sum,1L);
                     right.add(sum);
                 }
             }
