@@ -7,6 +7,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
+/**
+ * Main 설명 : 부분 수열의 합2
+ * @author jowonjun
+ * @version 1.0.0
+ * 작성일 : 2022/04/14
+**/
 public class Main {
     static Fs fs = new Fs();
     static int n;
