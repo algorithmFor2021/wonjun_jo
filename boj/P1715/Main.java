@@ -2,28 +2,27 @@ package boj.P1715;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
     static Fs fs = new Fs();
     public static void main(String[] args) throws Exception{
         int n = fs.nInt();
-        int[] arr = new int[n];
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
 
-        for(int i=0;i<n;i++) arr[i] = fs.nInt();
-
-        Arrays.sort(arr);
-
-        if(n == 1) {
-            System.out.println(0);
-            return;
-        }
+        for(int i=0;i<n;i++) pq.add(fs.nInt());
 
         int sum = 0;
-        for(int i=0;i<n-1;i++) {
-            sum += (arr[i] + arr[i+1]);
-            arr[i+1] = (arr[i] + arr[i+1]);
+
+        while(!pq.isEmpty()) {
+            if(pq.size() == 1) break;
+            else {
+                int a = pq.poll();
+                int b = pq.poll();
+                sum += (a + b);
+                pq.add(a+b);
+            }
         }
 
         System.out.println(sum);
