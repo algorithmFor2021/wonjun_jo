@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 /**
- * Main 설명 : 전화번호 목록
+ * Main 설명 : 전화번호 목록 .. Trie
  * @author jowonjun
  * @version 1.0.0
  * 작성일 : 2022/04/25
