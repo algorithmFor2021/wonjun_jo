@@ -30,7 +30,7 @@ public class Main {
             temp = new Stack<>();
             boolean flag = false;
             for(char r : rMask) {
-                if(r == stk.peek()) {
+                if(!stk.isEmpty() && r == stk.peek()) {
                     temp.add(stk.pop());
                 }else {
                     flag = true;
