@@ -5,7 +5,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
-
+/**
+ * Main 설명 : 과제
+ * @author jowonjun
+ * @version 1.0.0
+ * 작성일 : 2022/05/02
+**/
 public class Main {
     static Fs fs = new Fs();
 
