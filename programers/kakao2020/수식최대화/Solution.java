@@ -4,7 +4,12 @@ package programers.kakao2020.수식최대화;
 import java.util.Iterator;
 import java.util.Stack;
 import java.util.StringTokenizer;
-
+/**
+ * Solution 설명 :
+ * @author jowonjun
+ * @version 1.0.0
+ * 작성일 : 2022/05/05
+**/
 public class Solution {
     char[][] operator = {
             {'-','+','*'},
