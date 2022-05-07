@@ -19,37 +19,40 @@ public class Main {
             }
         }
 
-        dfs(0,str);
+        Queue<String> q = new LinkedList<>();
+        q.add(str);
+        visit.put(str,0);
 
+        while(!q.isEmpty()) {
+            String cur = q.poll();
 
-        System.out.println(visit.get(cmp));
-    }
+            // 0의 위치
+            int loc = cur.indexOf('0');
+            int x = loc / 3;
+            int y = loc % 3;
 
-    static void dfs(int move , String cur) {
+            for(int i=0;i<4;i++) {
+                int nx = x + dx[i];
+                int ny = y + dy[i];
 
-        int pos = cur.indexOf('0');
-        int x = pos / 3;
-        int y = pos % 3;
+                if(nx >= 0 && ny >=0 && nx < 3 && ny < 3) {
+                    int newLoc = nx*3 + ny;
+                    char ch = cur.charAt(newLoc);
+                    String next = cur;
+                    next = next.replace('0','9');
+                    next = next.replace(ch,'0');
+                    next = next.replace('9',ch);
 
-        for(int i=0;i<4;i++) {
-            int nx = x + dx[i];
-            int ny = y + dy[i];
-
-            if(nx >=0 && ny >=0 && nx <3 && ny < 3) {
-                int n = nx*3 + ny;
-                char ch = cur.charAt(n);
-                String next = cur;
-                next = next.replace('0','9');
-                next = next.replace(ch,'0');
-                next = next.replace('9',ch);
-
-                if(!visit.containsKey(next)) {
-                    visit.put(next,move+1);
-                    dfs(move + 1, next);
+                    if(!visit.containsKey(next)) {
+                        visit.put(next,visit.get(cur)+1);
+                        q.add(next);
+                    }
                 }
             }
-
         }
+
+        System.out.println(visit.getOrDefault(cmp, -1));
+
 
     }
 
