@@ -4,11 +4,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 /**
- * Main 설명 :
+ * Main 설명 : 최소값 구하기
  * @author jowonjun
  * @version 1.0.0
  * 작성일 : 2022/05/11
