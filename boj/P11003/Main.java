@@ -7,7 +7,7 @@ import java.util.Deque;
 import java.util.StringTokenizer;
 
 /**
- * Main 설명 : 최소값 구하기
+ * Main 설명 : 최소값 구하기 last 알고리즘
  * @author jowonjun
  * @version 1.0.0
  * 작성일 : 2022/05/11
