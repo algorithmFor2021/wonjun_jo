@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.StringTokenizer;
 
 /**
- * Main 설명 : 수 묶기 2
+ * Main 설명 : 마지막 알고리즘! 수묶기
  * @author jowonjun
  * @version 1.0.0
  * 작성일 : 2022/05/18
