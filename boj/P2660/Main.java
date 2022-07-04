@@ -66,6 +66,20 @@ public class Main {
         for(int l : list) sb.append(l).append(" ");
         System.out.println(g+" "+list.size());
         System.out.println(sb);
+
+
+        String s = "apple";
+        s = s + " is red";
+
+        StringBuffer sbf = new StringBuffer("banana");
+        sbf.append(" is yellow");
+
+        String s1 = "LOVE";
+        String s2 = "LOVE";
+
+        String s3 = new String("LOVE");
+        String s4 = new String("LOVE");
+
     }
 
     static class Fs{
